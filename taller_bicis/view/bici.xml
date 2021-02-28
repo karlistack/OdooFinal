@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<act_window id="taller_bicis" name="taller_bicis"
+			res_model="gestion.taller_bicis" />
+		<record id="gestion_taller_bicis_tree" model="ir.ui.view">
+			<field name="name">Lista taller_biciss</field>
+			<field name="model">gestion.taller_bicis</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="id"/>
+					<field name="marca"/>
+					<field name="telefono"/>
+					<field name="cliente"/>
+					<field name="servicio"/>
+				</tree>
+			</field>
+		</record>
+		<record id="gestion_taller_bicis_view_search"
+			model="ir.ui.view">
+			<field name="name">Busqueda </field>
+			<field name="model">gestion.taller_bicis</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="id"/>
+					<field name="marca"/>
+					<field name="telefono"/>
+					<field name="cliente"/>
+					<field name="servicio"/>
+				</search>
+			</field>
+		</record>
+		<act_window id="gestion_cliente_action" name="cliente"
+			res_model="gestion.cliente" />
+		<record id="gestion_cliente_tree" model="ir.ui.view">
+			<field name="name">Lista clientes</field>
+			<field name="model">gestion.cliente</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="nombre"/>
+					<field name="dni"/>
+				</tree>
+			</field>
+		</record>
+		<record id="gestion_cliente_view_search"
+			model="ir.ui.view">
+			<field name="name">Busqueda datos</field>
+			<field name="model">gestion.cliente</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="nombre"/>
+					<field name="dni"/>
+				</search>
+			</field>
+		</record>
+		<act_window id="gestion_servicio_action" name="servicio"
+			res_model="gestion.servicio" />
+		<record id="gestion_servicio_tree" model="ir.ui.view">
+			<field name="name">Lista servicios</field>
+			<field name="model">gestion.servicio</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="id_servicio"/>
+					<field name="descripcion"/>
+					<field name="precio"/>
+				</tree>
+			</field>
+		</record>
+		<record id="gestion_servicio_view_search"
+			model="ir.ui.view">
+			<field name="name">Busqueda datos</field>
+			<field name="model">gestion.servicio</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="id_servicio"/>
+					<field name="descripcion"/>
+					<field name="precio"/>
+				</search>
+			</field>
+		</record>
+
+		<menuitem name="gestion" id="menu_inicio" sequence="10"/>
+		<menuitem name="gestion" id="menu_taller" parent="menu_inicio" sequence="10"/>
+		<menuitem name="taller_bicis" id="menu_taller_bicis" action="taller_bicis" parent="menu_taller" sequence="10"/>
+
+		<menuitem name="Clientes" id="menu_clientes" parent="menu_inicio" sequence="10"/>
+		<menuitem name="Cliente" id="menu_cliente" action="gestion_cliente_action" parent="menu_clientes" sequence="10"/>
+
+		<menuitem name="Servicios" id="menu_servicios" parent="menu_inicio" sequence="10"/>
+		<menuitem name="Servicio" id="menu_servicio" action="gestion_servicio_action" parent="menu_servicios" sequence="10"/>
+	</data>
+</odoo>
