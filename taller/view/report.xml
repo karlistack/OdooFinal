@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <report
+        id="report_bici"
+        model="taller.bici"
+        string="bici"
+        report_type="qweb-pdf"
+        name="taller.report_bici_template"
+    />
+
+    <template id="report_taller_template">
+        <div class="header" style="border-bottom: 2px solid black">
+            <h3 class="text-center">bici</h3>
+            <div style="height: auto;display: flex;flex-direction: row;">
+                <div style="width:40vw;">
+                    <strong>modelo de la bici</strong>:
+                    <span t-esc="docs[0]['idbici']"></span>
+                </div>
+                <div style="width:40vw;">
+                    <strong>marca de la bici</strong>:
+                    <span t-esc="docs[0]['marca']"></span>
+                </div>
+                <div style="width:40vw;">
+                    <strong>Telefono proporcionado por el cliente</strong>:
+                    <span t-esc="docs[0]['telefono']"></span>
+                </div>
+                <div style="width:40vw;">
+                    <strong>Cliente</strong>:
+                    <span t-esc="docs[0]['cliente'].nombre"></span>
+                </div>
+            </div>
+        </div>
+        <div class="article">
+            <table class="table table-condensed table-bordered" style="width: 100%">
+                <thead>
+                    <th class="text-center" style="width: 15%">Id del servicio</th>
+                    <th class="text-center" style="width: 50%">Descripcion</th>
+                    <th class="text-center" style="width: 15%">Precio</th>
+                </thead>
+                <tbody>
+                    <t t-foreach="docs[0]['servicio']" t-as="serv">
+                        <tr>
+                            <td>
+                                <span t-esc="prod['idservicio']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="prod['descripcion']"/>
+                            </td>
+                            <td class="text-center">
+                                <span t-esc="prod['precio']"/>
+                            </td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+        </div>
+        <div class="footer">
+            <div class="row text-center" style="border-top: 2px solid black;">
+                <div class="col-xs-3 col-xs-offset-9 text-right">
+                    <ul class="list-inline" style="margin-top:10px;">
+                        <li>Page:</li>
+                        <li>
+                            <span class="page"/>
+                        </li>
+                        <li>/</li>
+                        <li>
+                            <span class="topage"/>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>
